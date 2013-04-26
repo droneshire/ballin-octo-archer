@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.2.27)  26 APR 2013 01:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.2.27)  26 APR 2013 13:08
 entering extended mode
  %&-line parsing enabled.
 **EE244_Paper.tex
@@ -816,7 +816,11 @@ l.45 \section
              {Introduction and Problem Definition}
 ? 
 ! Undefined control sequence.
-l.54 ...tersection spacing distance of 375 ft \cit
+l.52 ... inner edge of the lane to be 14.4 ft \cit
+                                                  {Bureau}.
+? 
+! Undefined control sequence.
+l.56 ...tersection spacing distance of 375 ft \cit
                                                   {Bureau}.
 ? 
 (./EE244_Paper.brf)
@@ -833,22 +837,21 @@ Runaway argument?
                    
 ? 
 
-Underfull \hbox (badness 2302) in paragraph at lines 82--0
+Underfull \hbox (badness 2302) in paragraph at lines 84--0
 []\OT1/cmr/m/n/10 "Bureau of Lo-cal Roads and Streets Man-ual." Illi-nois De-pa
 rt-ment of Trans-porta-tion. Illi-
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 82--0
+Underfull \hbox (badness 1320) in paragraph at lines 84--0
 \OT1/cmr/m/n/10 nois De-part-ment of Trans-porta-tion, last mod-i-fied Oc-to-be
 r 2008, ac-cessed May, 2013, 2013,
  []
 
-
-*
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+*
 (Please type a command or say `\end')
 *
 ! Missing $ inserted.
@@ -921,22 +924,22 @@ rs \OT1/cmr/m/n/10 :
 
 [2] (./EE244_Paper.aux) 
 Here is how much of TeX's memory you used:
- 18614 strings out of 493848
- 342672 string characters out of 1152823
- 436984 words of memory out of 3000000
- 21449 multiletter control sequences out of 15000+50000
+ 18617 strings out of 493848
+ 342720 string characters out of 1152823
+ 437985 words of memory out of 3000000
+ 21452 multiletter control sequences out of 15000+50000
  14337 words of font info for 62 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 49i,6n,60p,417b,389s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,6n,60p,644b,393s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/typ
 e1/public/amsfonts/cm/cmr17.pfb>
-Output written on EE244_Paper.pdf (2 pages, 93982 bytes).
+Output written on EE244_Paper.pdf (2 pages, 95891 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
+ 108 PDF objects out of 1000 (max. 8388607)
  22 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 
