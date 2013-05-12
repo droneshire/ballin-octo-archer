@@ -23,9 +23,9 @@
 \usepackage{pgf}
 \usepackage{tikz}
 \usepackage[latin1]{inputenc}
+\usepackage{float}
 \usepackage{wrapfig}
 \usetikzlibrary{arrows,automata,shapes}
-\usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amssymb}
@@ -42,23 +42,48 @@
 \begin{document}
 
 \maketitle
+
+
 \section{Introduction and Problem Definition}
+
+Once limited to the realm of science fiction, autonomous consumer vehicles, or driverless cars, present a very exciting opportunity for the application of interdisciplinary research from artificial intelligence, robotics, control theory, and embedded systems. Since the late 2000s, numerous advances have been made in the field. Prototypes have been researched and/or tested by Toyota, Nissan, and Audi. Three U.S. states have passed laws permitting autonomous vehicles. Today, Google’s trillion-dollar driverless cars can be seen driving on the streets in the Bay Area. A world full of driverless cars presents a host of benefits, such as increased safety due to fewer accidents, improved energy efficiency, increased throughput due to faster speeds, and improved accessibility due to removal of constraints on occupants age or disability status.
+
+However it is still a relatively young research topic, and fully autonomous vehicles are very much a thing of the future. The full assimilation of autonomous vehicles in daily life involves solving many subproblems, such as ensuring safety, implementing error-free and robust control mechanisms, and building corresponding infrastructure. One of these is the design of intersections that support and optimize for autonomous vehicles - not only will intersections need to adapt to the new self-driving cars, the cars also have the potential to make the intersections much more efficient. There exists an almost ‘trivial’ solution - replacing all intersections with roundabouts - but that is often unfeasible in high-density urban areas, and the cost of real estate required for implementation is too high. Traditional, four way intersections will need to be revamped: red-yellow-green switching will be rendered mostly obsolete, and traffic will be continuously directed at a much finer scale by an autonomous controller agent.
+
+In this paper, we propose a model for such an intelligent, automated intersection of two lanes on each side, to facilitate efficient routing of a sampling of vehicles that are mostly autonomous. We chose to include some non-autonomous or human cars to model a slightly more realistic situation, because unfortunately everyone will not be simultaneously using driverless cars overnight. Our model, unlike some existing research, advocates for a centralized controller instead of a P2P protocol. This centralized controller will ensure safety (i.e. no collisions), and fairness (i.e. first-come-first-serve). We will formalize the communications between the car and the central controller, provide the mathematical groundwork for the geometry of our intersection and the paths of the vehicles, and analyze different throughput results obtained by using different scheduling algorithms. We will also provide a demonstrative model of our system using Ptolemy II. With our model we hope to provide groundwork for developing a more robust solution to a problem that is looming in the foreseeable future, as autonomous cars gain more popularity and usage. 
 
 \section{Previous Work}
 
+
+
 \section{Algorithms and Models Devised}
 
-\subsection{Vehicles}
-In our autonomous intersection model, there are two types of vehicles that are defined: autonomous vehicles and human driven vehicles.  
-Both vehicle types take on the same physical characteristics in our model; however, they differ in behavioral capabilities.  
-Typically, cars are classified into many different phycial categories.  
-For simplicity and tractibility, our model utilizes the most common type of vehicle, the passenger car (denoted as type P vehicle).  
-Minimum characteristics of type P cars require a design radius of 24 ft with an minimum inside radius of 14.4 ft. from the inner edge of the lane \cit{Bureau}.
 
 
 \subsection{Intersection}
-The intersection analyzed in this study was a typical intersection consisting of four perpendicular 4-lane roadways.   As specified in standard roadway construction specifications, each of these roadways have an intersection spacing distance of 375 ft \cit{Bureau}.
+
+The intersection analyzed in this study was a typical intersection consisting of four perpendicular 4-lane roadways.   As specified in standard roadway construction specifications, each of these roadways have an intersection spacing distance of 375 ft \cite{Bureau}.
 This was in order to provide a sufficient distance in which vehicles can properly maneuver in standard vehicle behaviors. 
+According to the national motorists association, the average urban intersate speed limit is 55 mph with an average of 300 ft of visible roadway before the intersection \cite{Motorists}.
+
+\subsection{Vehicles}
+In our autonomous intersection model, there were originally two types of vehicles that are defined: autonomous vehicles and human driven vehicles.  However, given the scope of the project the vehicle types were reduced to autonomousvehicles only.
+  
+The autonomous vehicles all take on the same physical characteristics in our model.  Cars can differ in their
+\begin{itemize}
+\item Intersection entry time: $1-45$ secs
+\item Initial velocity (m/s): $v_0 \in [20,40]$
+\item Direction: $N,S,E,W$
+\item Route: $L,S1,S2,R$
+\end{itemize}
+
+Each of these parameters is randomly generated in the system to reflect a realistic model.
+
+Typically, cars are classified into many different phycial categories.  
+For simplicity and tractibility, our model utilizes the most common type of vehicle, the passenger car (denoted as type P vehicle).  
+We define vehicle characteristics based on the intersection properties, normally defined in local roadway laws and regulations.  In this study, minimum characteristics of type P cars require a turn radius of 24 ft with a minimum inside radius of 14.4 ft. from the inner edge of the lane \cite{Bureau}.  
+Furthermore, the vehicles in our model must be able to satisfy that turn radius travelling at the proposed intersection speed limit range of 35 mph-55 mph. 
+
 
 \section{Technical Challenges}
 
@@ -71,19 +96,25 @@ This was in order to provide a sufficient distance in which vehicles can properl
 \subsection{Praagya Singh}
 
 \subsection{Ross Yeager}
+Ross, along with all members, helped define the overall system problem and assumpions, and he was specifically in charge of designing and modelling the entire vehicle model.  
+He created the Ptolemy system consisting of Multi-Instance Composite actors that allowed for a scalabile system with respect to the number of cars in the intersection.  
+He created a the system that allowed for continous vehicle flow as well as the FSM that defined vehicle behavior.
 
 \section{Conclusion}
 
 \subsection{Course Application}
+In order to analyze and simulate our model, Ptolemy modelling software was used.  This tool allows for the creation of hybrid systems such as those seen in the autonomous roadway.  The system was modelled using a Modal Model for the vehicles represented in the system
 
 \subsection{Feedback}
 
+
 \begin{thebibliography}{100}
-\bibitem[1]{Bureau} "Bureau of Local Roads and Streets Manual." Illinois Department of Transportation. Illinois Department of Transportation, last modified October 2008, accessed May, 2013, 2013, http://www.dot.il.gov/blr/manuals/blrmanual.html.
-\bibitem[2]{Dresner} Dresner, K. and P. Stone. 2006. "Traffic Intersections of the Future." AI Magazine, 1593-1593-1596.
+\bibitem[1]{Bureau} "Bureau of Local Roads and Streets Manual." Illinois Department of Transportation. Illinois Department of Transportation, last modified October 2008, accessed May, 2013, http://www.dot.il.gov/blr/manuals/blrmanual.html.
+\bibitem[2]{Dresner} Dresner, K. and P. Stone. 2006. "Traffic Intersections of the Future." AI Magazine, 1593-1596.
 \bibitem[3]{Lu} Lu, J., S. Chen, X. Ge, and F. Pan. 2012. "A Programmable Calculation Procedure for Number of Traffic Conflict Points at Highway Intersections." Journal of Advanced Transportation 46 (10).
-\bibitem[4]{Osiecki} Osiecki, L., Canning, K. and Scarborough, W. "Delaware Department of Transportation Road Design Manual." Delaware.gov. Delaware Department of Transportation, last modified October 1, 2004, accessed May/2013, 2013, http://www.deldot.gov/information/pubs_forms/manuals/road_design/.
-\bibitem[5]{Wolshon} Wolshon, B. 2004. Toolbox on Intersection Safety and Design. The Institute of Transportation Engineers:.
+\bibitem[4]{Osiecki} Osiecki, L., Canning, K. and Scarborough, W. "Delaware Department of Transportation Road Design Manual." Delaware.gov. Delaware Department of Transportation, last modified October 1, 2004, accessed May, 2013, http://www.deldot.gov/information/pubs\_forms/manuals/road\_design/.
+\bibitem[5]{Wolshon} Wolshon, B. 2004. Toolbox on Intersection Safety and Design. The Institute of Transportation Engineers.
+\bibitem[6]{Motorists} "State Speed Limit Chart." National Motorists Association. motorists.org, last modified August 24, 2012, accessed May, 2013, www.motorists.org/speed-limits/state-chart
 \end{thebibliography}
 
 \end{document}
