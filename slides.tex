@@ -173,6 +173,7 @@ INSERT PIC HERE
 \end{frame}
 
 \begin{frame}{ENTER State}
+\begin{block}{ENTER State}
 \begin{minipage}{0.45\linewidth}
 Abstraction:
 \begin{itemize}
@@ -188,6 +189,7 @@ Guard(s);
 \item $t_{GLOBAL} > t_{ENTER}$
 \end{itemize}
 \end{minipage}
+\end{block}
 \end{frame}
 
 \begin{frame}{ENTER State}
@@ -196,6 +198,7 @@ INSERT PIC HERE
 \end{frame}
 
 \begin{frame}{GO State}
+\begin{block}{GO State}
 \begin{minipage}{0.45\linewidth}
 Abstraction:
 \begin{itemize}
@@ -211,6 +214,7 @@ Guard(s);
 \item $t_{GLOBAL} > t_{STRAIGHTAWAY}$
 \end{itemize}
 \end{minipage}
+\end{block}
 \end{frame}
 
 
@@ -249,7 +253,22 @@ INSERT PIC HERE
 \subsection{Controller Algorithm}
 \begin{frame}{Algorithm Overview}
 \begin{lstlisting}
-PLACE CODE HERE
+Initialize a list of conflict zones and their distances from the starting points of the intersections along the curved paths.
+
+At every time step:
+    current = []
+    t = ContinuousDirector.currentTime
+    add all the tokens received from Vehicle modal model to current
+    for each car in current:
+        if car needs a booking:
+            find max velocity in [currentVel - 10, currentVel + 10] which ensures safety (no collisions)
+            if max velocity found:
+                broadcast(returnvelocity = max velocity, delay = 0, id = car.id)
+            if no such velocity found:
+                set returnvelocity = currentVel + 10
+                \\ if none of the 
+                set delay = end of latest booked time interval for all conflict zones
+                broadcast(returnvelocity, delay, id = car.id)
 \end{lstlisting}
 \end{frame}
 

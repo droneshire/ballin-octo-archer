@@ -1,0 +1,14 @@
+\beamer@endinputifotherversion {3.10pt}
+\beamer@sectionintoc {1}{Introduction}{1}{0}{1}
+\beamer@sectionintoc {2}{Objectives and Assumptions}{3}{0}{2}
+\beamer@subsectionintoc {2}{1}{Original Objectives}{3}{0}{2}
+\beamer@subsectionintoc {2}{2}{Objective Changes}{5}{0}{2}
+\beamer@sectionintoc {3}{Vehicle Model}{8}{0}{3}
+\beamer@subsectionintoc {3}{1}{Tools and Vehicle Assumptions}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Ptolemy Vehicle Model}{10}{0}{3}
+\beamer@sectionintoc {4}{Controller Model}{19}{0}{4}
+\beamer@subsectionintoc {4}{1}{Controller Properties}{19}{0}{4}
+\beamer@subsectionintoc {4}{2}{Ptolemy Model}{20}{0}{4}
+\beamer@subsectionintoc {4}{3}{Controller Algorithm}{21}{0}{4}
+\beamer@sectionintoc {5}{Technical Challenges}{23}{0}{5}
+\beamer@sectionintoc {6}{Summary}{24}{0}{6}
