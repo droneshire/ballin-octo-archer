@@ -1,0 +1,77 @@
+\subsection{Conflict Detection}
+
+To be effective at preventing traffic accidents, the controller for an
+automated intersection must have an accurate method for detecting
+collisions between individual vehicles before they arrive within minimum
+stopping distance of the intersection.  Since the control problem
+imposes hard real-time requirements, the primary concern was performance
+that scaled gracefully with the number of participating vehicles.
+
+As always, a balance must be found between fidelity and tractability.
+For the highest accuracy, trajectories can be represented as
+three-dimensional curves, with coordinates consisting of a temporal
+component as well as spatial position.  Preventing collisions is
+therefore equivalent to enforcing a lower bound on the Euclidean
+distance between two such curves.  However, this method demands an
+unrealistic amount of information about vehicular physics than is
+obtainable during runtime.  We desire an alternative method that is
+less numerically intensive, so it can be repeatedly applied as traffic
+conditions evolve, but whose approximations do not compromise safety.
+
+Focusing on the locations at which collisions are most likely to occur,
+we begin with the concept of a \emph{traffic conflict point}, defined
+as the point at at which multiple traffic flows may cross or merge.
+As per normal regulations, we require that all vehicles adhere to
+designated lanes when traversing the intersection, so that trajectories
+can be bounded exactly.  Thus, the set of conflict points are determined
+by the intersections between curves representing all legal paths of
+vehicles.
+
+We assume the following in our reference intersection model:
+\begin{enumerate}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\item Four-way symmetric intersection with orthogonal arms and
+	perfect alignment
+\item Open space without obstructions (e.g., pedestrians)
+\item The total number of lanes at any exit approach equals the
+	total number of lanes at any entrance approach.
+\item Traffic lanes at an exit approach can only serve as the
+	exit of lanes with the same lane number relative to
+	the center line.
+\end{enumerate}
+
+Straight paths are simply modeled as vertical and horizontal lines.
+The left-turn paths are circular arcs that circumscribe three control
+points at the entrance, midpoint, and exit of the turn; the midpoints
+are chosen to avoid conflicts with oncoming left-turn traffic.
+For simplicity, U-turns are disallowed.  The right-turn paths are
+circular arcs which subtend a right angle.\footnote{The actual path
+equations are viewable on the presentation slides submitted along with
+this report.}
+
+In reality, vehicles are not point masses -- they occupy area.
+We desire to enforce a minimum separation between vehicles traveling
+on conflicting paths.  A \emph{traffic conflict zone} is defined as the
+segment of a given path within a certain distance of a conflict point.
+The initial and terminal points of a conflict zone are expressed as an
+ordered pair of offsets/displacements along the curve, relative to the
+start of the path.
+
+The collision detection algorithm is therefore:
+\begin{enumerate}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\item Determine the set of conflict zones along the path.
+\item Numerically integrate to determine when endpoints of conflict
+	zones are crossed, yielding a set of time intervals.
+\item For each conflict zone, check whether the corresponding time
+	interval overlaps with that of any other active vehicle.
+\end{enumerate}
+
+It is important to note that conflict zones are static and therefore
+need only to be calculated once during initialization.  Runtime does
+not require knowledge about curvature of paths; only linear
+displacements matter.  Reservations for a vehicle are thus scheduled
+as time intervals during which it has exclusive access to the conflict
+zones along its path.

@@ -1,0 +1,71 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Automated Intersection Modeling}
+\author{Albert Ou, Praagya Singh, Ross Yeager}
+\date{May 17, 2013}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\input{report/intro.tex}
+
+\section{Previous Work}
+
+The Autonomous Intersection Management project at UT Austin investigated
+control policies that divided the intersection into a grid of reservation
+tiles.\cite{Dresner}
+
+\section{Algorithms and Models}
+
+\input{report/vehicles.tex}
+\input{report/conflict.tex}
+
+\section{Technical Challenges}
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\item Continuous car flow given static number of vehicles
+\item Delivering controller commands to specified car instance
+\item Continuous time solver time step evaluation issues
+\item Hybrid system causality issues
+\item Scalability
+\end{itemize}
+
+\section{Results}
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\item Functional hybrid model
+\item Continuous vehicle flow with static vehicle set
+\item Centralized responsive controller
+\item Rigorous intersection path definitions
+\item Multiplexed communication to vehicles
+\end{itemize}
+
+\section{Future Work}
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\item Investigate resource scheduling algorithms for optimization
+\item Introduce non-zero vehicle acceleration into the model
+\item Add support for vehicles with human drivers
+\end{itemize}
+
+\section{Team Roles}
+\input{report/roles.tex}
+
+\section{Conclusion}
+\input{report/conclusion.tex}
+
+\newpage
+\input{report/biblio.tex}
+\end{document}
